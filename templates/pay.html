@@ -1,0 +1,31 @@
+{% extends 'commons/base.html' %}
+{% load static %}
+{% block title %}pay{% endblock title %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<center>
+
+<h2>Make a Payment</h2>
+
+
+<form method="post" action="{% url 'fruit_app:stk' %}">
+  {% csrf_token %}
+    <label class="form-label" for="phone">Phone Number :</label><br>
+    <input type="number" id="phone" name="phone" value="254" placeholder="Phone Number"> 
+    <br><br>
+
+    <label class="form-label" for="amount">Amount in ksh :</label><br>
+    <input type="text" id="amount" name="amount" placeholder="Amount">
+
+    <br><br>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+</center>
+
+{% endblock %}

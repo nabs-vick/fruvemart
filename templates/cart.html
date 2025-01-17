@@ -1,0 +1,81 @@
+{% extends "commons/base.html" %}
+{% load static %}
+{% block title %}cart{% endblock title %}
+{% block content %}
+
+        <!-- Modal Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Search End -->
+
+
+        <!-- Single Page Header start -->
+        <div class="container-fluid page-header py-5">
+            <h1 class="text-center text-white display-6">Cart</h1>
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item active text-white">Cart</li>
+            </ol>
+        </div>
+        <!-- Single Page Header End -->
+
+
+        <!-- Cart Page Start -->
+        <div class="container-fluid py-5">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th scope="col">Products</th>
+                                <th scope="col">collector</th>
+                                <th scope="col">product name</th>
+                                <th scope="col">phone number</th>
+                                <th scope="col">address</th>
+                                <th scope="col">town</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Messages</th>
+                                <th scope="col">actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for component in components %}
+                            <tr>
+                                <td>{{component.product_img}}</td>
+                                <td>{{component.name}}</td>
+                                <td>{{component.product_name}}</td>
+                                <td>{{component.phone_num}}</td>
+                                <td>{{component.address}}</td>
+                                <td>{{component.town}}</td>
+                                <td>{{component.price}}ksh</td>
+                                <td>{{component.message}}</td>
+                                <td>
+                                    <center>
+                                        <a href="{% url 'fruit_app:delete_order' component.id %}" class="btn btn-danger" style="margin-right: 10px;">Delete</a>
+                                        <a href="{% url 'fruit_app:update_order' component.id %}" class="btn btn-secondary" style="margin-right: 10px;">Update</a>
+                                        <a href="{% url 'fruit_app:pay' %}" class="btn btn-primary">Pay</a>
+                                    </center>
+                                </td>
+                                
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+               
+        </div>
+        <!-- Cart Page End -->
+
+        {% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "commons/base.html" %}
+{% block title %}add products{% endblock title %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<center >
+    <div style="{width: 500px;}">
+        <h1>Add Product</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Add Product</button>
+        </form>
+    </div>   
+</center>
+
+{% endblock content %}

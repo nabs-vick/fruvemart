@@ -1,0 +1,65 @@
+{% extends "commons/base.html" %}
+{% load static %}
+{% block title %}update_order{% endblock title %}
+{% block content %}
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <h1 class="mb-4">Billing details</h1>
+        <form action="#" method="post">
+            {% csrf_token %}
+            <div class="row g-5">
+                <div class="col-md-12 col-lg-6 col-xl-7">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-6">
+                            <div class="form-item w-100">
+                                <label class="form-label my-3">Full Name<sup>*</sup></label>
+                                <input type="text" name="name" value="{{ components.name }}" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-6">
+                            <div class="form-item w-100">
+                                <label class="form-label my-3">product name<sup>*</sup></label>
+                                <input type="text" name="product_name" value="{{ components.product_name }}" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <label class="form-label my-3">Address <sup>*</sup></label>
+                        <input type="text" name="address" value="{{ components.address }}" class="form-control" placeholder="House Number Street Name">
+                    </div>
+                    <div class="form-item">
+                        <label class="form-label my-3">Town/City<sup>*</sup></label>
+                        <input type="text" name="town" value="{{ components.town }}" class="form-control">
+                    </div>
+                    <div class="form-item">
+                        <label class="form-label my-3">Phone Number<sup>*</sup></label>
+                        <input type="text" name="phone_num" value="{{ components.phone_num }}" class="form-control">
+                    </div>
+                    
+                    <div class="form-item">
+                        <label class="form-label my-3">price<sup>*</sup></label>
+                        <input type="tel" name="price" value="{{ components.price }}" class="form-control">
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-center">
+                        <div data-mdb-ripple-init class="btn btn-primary btn-rounded">
+                            <label class="form-label text-white m-1" for="customFile1">Choose image file of product</label>
+                            <input type="file" name="product" value="{{ components.product_img }}" class="form-control d-none" id="customFile1" onchange="displaySelectedImage(event, 'selectedImage')" />
+                        </div>
+                    </div>
+                    
+                    
+                    <hr>
+                    
+                    <div class="form-item">
+                        <input name="message" value="{{ components.message }}"  class="form-control" spellcheck="false" cols="30" rows="11" placeholder="Order Notes (Optional)">
+                    </div>
+                </div>
+                <div class="row g-4 text-center align-items-center justify-content-center pt-4">
+                    <button type="submit" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

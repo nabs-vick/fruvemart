@@ -1,0 +1,100 @@
+{% extends "commons/base.html" %}
+{% load static %}
+{% block title %}checkout{% endblock title %}
+{% block content %}
+
+        <!-- Modal Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Search End -->
+
+
+        <!-- Single Page Header start -->
+        <div class="container-fluid page-header py-5">
+            <h1 class="text-center text-white display-6">Checkout</h1>
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item active text-white">Checkout</li>
+            </ol>
+        </div>
+        <!-- Single Page Header End -->
+
+
+        <!-- Checkout Page Start -->
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <h1 class="mb-4">enter product name and collectors details</h1>
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <div class="row g-5">
+                        <div class="col-md-12 col-lg-6 col-xl-7">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="form-item w-100">
+                                        <label class="form-label my-3">Full Name<sup>*</sup></label>
+                                        <input type="text" name="name" class="form-control" placeholder="collector's name">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="form-item w-100">
+                                        <label class="form-label my-3">product name<sup>*</sup></label>
+                                        <input type="text" name="product_name" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item">
+                                <label class="form-label my-3">Address <sup>*</sup></label>
+                                <input type="text" name="address" class="form-control" placeholder="House Number Street Name">
+                            </div>
+                            <div class="form-item">
+                                <label class="form-label my-3">Town/City<sup>*</sup></label>
+                                <input type="text" name="town" class="form-control">
+                            </div>
+                            <div class="form-item">
+                                <label class="form-label my-3">Phone Number<sup>*</sup></label>
+                                <input type="text" name="phone_num" class="form-control">
+                            </div>
+                            
+                            <div class="form-item">
+                                <label class="form-label my-3">price<sup>*</sup></label>
+                                <input type="tel" name="price" class="form-control">
+                            </div>
+                            <br>
+                            <div class="d-flex justify-content-center">
+                                <div data-mdb-ripple-init class="btn btn-primary btn-rounded">
+                                    <label class="form-label text-white m-1" for="customFile1">Choose image file of product</label>
+                                    <input type="file" name="product_img" class="form-control d-none" id="customFile1" onchange="displaySelectedImage(event, 'selectedImage')" />
+                                </div>
+                            </div>
+                            
+                            
+                            <hr>
+                            
+                            <div class="form-item">
+                                <textarea name="message" class="form-control" spellcheck="false" cols="30" rows="11" placeholder="Order Notes (Optional)"></textarea>
+                            </div>
+                        </div>
+                        <div class="row g-4 text-center align-items-center justify-content-center pt-4">
+                            <button type="submit" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">submit Order</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Checkout Page End -->
+        {% endblock content %}
