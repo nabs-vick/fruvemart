@@ -24,9 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-knp@rt9!jh9*@xel+!pj&(ipv_u9)!&d1w!vvf)5@gymew&f)h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app','127.0.0.1','.now.sh']
+
 
 
 # Application definition
@@ -38,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.flatpages',
+    'django.contrib.sites',
     'fruit_app',
+    
 ]
 
 MIDDLEWARE = [
@@ -49,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'fruitables.urls'
@@ -75,22 +80,17 @@ WSGI_APPLICATION = 'fruitables.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE':'django.db.backends.postgresql',
+        'NAME':'railway',
+        'USER' :'postgres',
+        'PASSWORD':'VutkswqBbGRJoEwXHOmBqarOvaVwqYDw',
+        'HOST':'shuttle.proxy.rlwy.net',
+        'PORT': '54581',
     }
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE':'django.db.backends.sqlite3',
-#         'NAME':'fruvemart',
-#         'USER' :'root',
-#         'PASSWORD':'',
-#         'HOST':'127.0.0.1',
-#         'PORT': '3306',
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -130,6 +130,9 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS =[
     os.path.join(BASE_DIR,'static')
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
+
 MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
